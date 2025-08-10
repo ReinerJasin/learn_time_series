@@ -1,0 +1,177 @@
+01_intro_time_series.ipynb
+Goal: Introduce time series basics and set the stage.
+- Definition of time series data
+- Examples of time series in real life (finance, weather, sales)
+- Difference between time series and other data types
+- Components of time series:
+    - Trend (long-term increase or decrease)
+    - Seasonality (regular repeating patterns)
+    - Cyclicity (longer-term but irregular cycles)
+    - Noise (random fluctuations)
+- Stationary vs non-stationary time series
+- Basic visualization with matplotlib/seaborn (line plots, scatter plots)
+- Overview of common Python libraries for time series analysis (pandas, statsmodels, matplotlib, seaborn)
+- How to load time series data in Python (datetime parsing, indexing)
+- Brief intro to frequency and resampling (daily, monthly, etc.)
+
+02_eda_time_series.ipynb
+Goal: Explore and visualize time series to understand patterns.
+- Plotting raw data with context (labels, titles)
+- Seasonal plots (plot by day of week, month, etc.)
+- Classical time series decomposition (additive & multiplicative models)
+- Introduction to STL decomposition (mention it, maybe code example)
+- Rolling statistics:
+    - Moving average (rolling mean) to smooth noise
+    - Rolling standard deviation to check variance stability
+- Plot rolling statistics to identify trend and volatility changes
+- Autocorrelation Function (ACF) plots — show how data points correlate with past values
+- Partial Autocorrelation Function (PACF) plots — show direct correlations at specific lags
+- Interpretation of ACF and PACF plots for model identification
+- Visual check for stationarity
+- Introduction to Augmented Dickey-Fuller (ADF) test (overview, no code yet)
+
+03_stationarity_and_transforms.ipynb
+Goal: Teach how to check and achieve stationarity, a key concept.
+- What stationarity means (constant mean, variance, autocorrelation)
+- Why stationarity is important for modeling (especially ARIMA)
+- Visual indicators of non-stationarity (trends, changing variance)
+- Augmented Dickey-Fuller (ADF) test:
+    - How it works
+    - How to interpret test statistic and p-value
+    - Example with code
+- KPSS test as a complementary test to ADF
+- What to do if series is not stationary:
+    - Differencing (first order, second order) explained with simple example
+    - Log transformation and Box-Cox transformation
+- How transforms stabilize variance and help stationarity
+- Code examples applying differencing and transforms and then re-testing stationarity
+
+04_error_metrics.ipynb
+Goal: Explain forecasting evaluation metrics clearly and simply.
+- Why error metrics matter (to compare models)
+- Mean Absolute Error (MAE): definition and interpretation
+- Mean Squared Error (MSE) and Root Mean Squared Error (RMSE): why squaring errors penalizes large mistakes
+- Mean Absolute Percentage Error (MAPE): pros and cons (percentage error)
+- When to prefer which metric (scale-dependent vs scale-independent)
+- Code examples calculating each metric using sklearn or numpy
+- Plotting actual vs forecast with error values displayed
+
+05_smoothing_methods.ipynb
+Goal: Introduce smoothing to identify trends and seasonality.
+- Simple Moving Average (SMA): calculation and smoothing effect
+- Exponential Smoothing: concept of weighting recent points more
+- Single Exponential Smoothing: formula and code example
+- Double Exponential Smoothing (Holt’s linear trend): handling trends
+- Triple Exponential Smoothing (Holt-Winters): handling trends + seasonality
+- Additive vs Multiplicative Holt-Winters models
+- Visualization of smoothing results and comparison with original data
+- When to use smoothing (noise reduction, trend estimation)
+
+06_arima_modeling.ipynb
+Goal: Teach ARIMA modeling theory and practical steps.
+- Recap of AR, I, MA components:
+    - AR(p): dependence on previous values
+    - I(d): differencing order for stationarity
+    - MA(q): dependence on previous errors
+- Building ARIMA models: theory and intuition
+- Model identification using ACF and PACF plots
+- Fitting ARIMA in Python with statsmodels
+- Model diagnostics: residual plots, autocorrelation of residuals
+- Ljung-Box test for residual autocorrelation
+- Forecasting with ARIMA and confidence intervals
+- Visualizing forecasts vs actual data
+
+07_sarima_and_sarimax.ipynb
+Goal: Extend ARIMA to seasonal and exogenous-variable models.
+- What seasonality means in ARIMA context
+- Seasonal ARIMA (SARIMA) components and parameters
+- How SARIMA handles seasonal differencing and seasonal AR/MA terms
+- SARIMAX: adding exogenous regressors (explanatory variables)
+- When and why to use exogenous variables
+- Practical examples of SARIMA and SARIMAX modeling
+- Parameter tuning tips for SARIMA models
+
+08_model_selection_and_cv.ipynb
+Goal: Teach systematic ways to select the best time series model.
+- Why model selection matters
+- Cross-validation for time series:
+    - Difference with regular CV (time order matters)
+    - Rolling-origin and expanding window methods
+- Grid search for ARIMA/SARIMA parameters
+- Using pmdarima’s auto_arima for automatic tuning
+- Comparing models with validation error metrics
+- Visualization of validation errors across parameters
+- Tips to avoid overfitting and underfitting
+
+09_residual_diagnostics.ipynb
+Goal: Teach how to validate model assumptions through residuals.
+- Why residuals should behave like white noise
+- Plot residuals vs time: looking for patterns
+- Histogram and Q-Q plots for residual normality check
+- ACF plot of residuals to check autocorrelation
+- Ljung-Box test on residuals for autocorrelation
+- What to do if residuals are not white noise (model improvement)
+- Code examples for all diagnostics
+
+10_missing_data_and_outliers.ipynb
+Goal: Handle real-world data issues that affect modeling.
+- Identifying missing data points
+- Simple techniques to fill missing data: forward fill, backward fill, interpolation
+- More advanced methods: seasonal interpolation
+- Detecting outliers: visualization (boxplots, scatter) and statistical methods
+- Impact of outliers on models
+- Handling outliers: winsorizing, trimming, or modeling separately
+- Practical examples with Python
+
+11_forecast_uncertainty.ipynb
+Goal: Understand and visualize forecast uncertainty.
+- What forecast intervals represent
+- Calculating confidence intervals for ARIMA/SARIMA forecasts
+- Visualizing forecasts with shaded confidence bands
+- How uncertainty grows over forecast horizon
+- Interpreting wide vs narrow intervals
+- Practical examples with plots
+
+12_multivariate_time_series_intro.ipynb (Optional)
+Goal: Introduce modeling multiple related time series together.
+- Why multivariate modeling? (capturing relationships)
+- Vector Autoregression (VAR): concept and components
+- Stationarity requirements in VAR
+- Estimating VAR models in Python
+- Simple forecasting with VAR
+- Basic diagnostics for VAR models
+
+13_state_space_and_kalman_filters.ipynb (Optional)
+Goal: Introduce advanced filtering and modeling techniques.
+- What is a state space model?
+- Difference between observed and latent states
+- Kalman filter intuition (recursive estimation)
+- Applications of Kalman filters (smoothing, forecasting)
+- Simple example implementation or use of statsmodels state space
+- Benefits and limitations
+
+14_change_point_detection.ipynb (Optional)
+Goal: Detect changes or breaks in time series behavior.
+- What are change points?
+- Why detecting them is useful (e.g., market shifts, faults)
+- Simple methods: cumulative sum (CUSUM), moving average change detection
+- Using Python libraries for change point detection (ruptures)
+- Practical example with visualization
+
+15_frequency_domain_analysis.ipynb (Optional)
+Goal: Explore time series in frequency domain.
+- Difference between time domain and frequency domain
+- Fourier Transform basics and intuition
+- Spectral density estimation
+- Using FFT in Python
+- Detecting hidden periodicities
+- Applications and limitations
+
+16_machine_learning_for_ts.ipynb (Optional)
+Goal: Introduce ML approaches to time series forecasting.
+- When to consider ML vs classical methods
+- Feature engineering for time series (lags, rolling stats)
+- Tree-based models: Random Forest, XGBoost for forecasting
+- Basic introduction to LSTM (conceptual)
+- Simple example of ML forecasting pipeline
+- Limitations and when not to use ML
