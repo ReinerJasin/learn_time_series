@@ -1,3 +1,5 @@
+PROJECT CURRENTLY POSTPONED, RN WORKING ON Discrete Fourier Transform notebook
+
 01_intro_time_series.ipynb
 Goal: Introduce time series basics and set the stage.
 - Definition of time series data
